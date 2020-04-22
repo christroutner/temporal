@@ -1,16 +1,15 @@
 {
-  "name": "@chris.troutner/bch-encrypt",
-  "description": "Multi-command CLI for working with ecrypted messages on BCH",
+  "name": "@chris.troutner/temporal",
+  "description": "Prototype CLI for interacting with temporal.cloud REST API.",
   "version": "1.0.1",
   "author": "Chris Troutner <chris.troutner@gmail.com>",
   "contributors": [
-    "Jeff Dickey @jdxcode",
-    "Gabriel Cardona <gabriel@bitcoin.com>"
+    "Jeff Dickey @jdxcode"
   ],
   "bin": {
-    "bch-encrypt": "./bin/run"
+    "temporal": "./bin/run"
   },
-  "bugs": "https://github.com/christroutner/bch-encrypt/issues",
+  "bugs": "https://github.com/christroutner/temporal/issues",
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
@@ -38,24 +37,26 @@
     "/oclif.manifest.json",
     "/src"
   ],
-  "homepage": "https://github.com/christroutner/bch-encrypt",
+  "homepage": "https://github.com/christroutner/temporal",
   "keywords": [
     "oclif",
     "bitcoin",
-    "encryption"
+    "encryption",
+    "ipfs",
+    "temporal"
   ],
   "license": "MIT",
   "main": "src/index.js",
   "oclif": {
     "commands": "./src/commands",
-    "bin": "bch-encrypt",
+    "bin": "temporal",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/christroutner/bch-encrypt.git"
+    "url": "git+https://github.com/christroutner/temporal.git"
   },
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
