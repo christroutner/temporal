@@ -56,7 +56,6 @@ class Upload extends Command {
       if (!time) {
         console.log('Pin time not specified. Defaulting to 1 month for pin time.')
         flags.time = 1
-        return false
       }
 
       return true

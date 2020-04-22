@@ -4,6 +4,9 @@ curl --request POST 'https://api.temporal.cloud/v2/auth/login' --header 'Content
 
 const axios = require('axios')
 
+const Temporal = require('temporal-js')
+const temporal = new Temporal(true)
+
 const { Command, flags } = require('@oclif/command')
 
 let _this
@@ -17,6 +20,7 @@ class Login extends Command {
     _this = this
 
     _this.axios = axios
+    _this.temporal = temporal
   }
 
   async run () {
@@ -25,8 +29,20 @@ class Login extends Command {
     const goodFlags = this.validateInput(flags)
     if (!goodFlags) throw new Error('Problem with input flags.')
 
-    const jwt = await _this.login(flags)
-    console.log(`JWT: ${jwt}`)
+    // const jwt = await _this.login(flags)
+    const jwt = await _this.login2(flags)
+    console.log('JWT: ', jwt)
+  }
+
+  async login2 (flags) {
+    try {
+      const jwt = await _this.temporal.login(flags.user, flags.pass)
+      // console.log(`jwt: ${JSON.stringify(jwt, null, 2)}`)
+      return jwt
+    } catch (err) {
+      console.error('Error in login(): ', err)
+      throw err
+    }
   }
 
   async login (flags) {
