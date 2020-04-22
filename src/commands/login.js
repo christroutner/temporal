@@ -38,64 +38,12 @@ class Login extends Command {
     try {
       const jwt = await _this.temporal.login(flags.user, flags.pass)
       // console.log(`jwt: ${JSON.stringify(jwt, null, 2)}`)
-      return jwt
+      return jwt.token
     } catch (err) {
       console.error('Error in login(): ', err)
       throw err
     }
   }
-
-  // async login (flags) {
-  //   try {
-  //     // const axiosOptions = {
-  //     //   method: 'post',
-  //     // headers: {
-  //     //   'Content-Type': 'text/plain'
-  //     // },
-  //     //   url: `${TEMPORAL_SERVER}v2/auth/login`,
-  //     //   body: JSON.stringify({
-  //     //     username: flags.user,
-  //     //     password: flags.pass
-  //     //   })
-  //     // }
-  //
-  //     const path = `${TEMPORAL_SERVER}v2/auth/login`
-  //     console.log(`path: ${path}`)
-  //
-  //     const body = JSON.stringify({
-  //       username: flags.user,
-  //       password: flags.pass
-  //     })
-  //     // const body = {
-  //     //   username: flags.user,
-  //     //   password: flags.pass
-  //     // }
-  //     console.log(`body: ${body}`)
-  //
-  //     const axiosOptions = {
-  //       method: 'post',
-  //       url: path,
-  //       body: body,
-  //       // body: {
-  //       //   username: flags.user,
-  //       //   password: flags.pass
-  //       // },
-  //       headers: {
-  //         // 'content-type': 'text/plain'
-  //         'Content-Type': 'application/json'
-  //       }
-  //     }
-  //
-  //     const axiosResponse = await _this.axios.request(axiosOptions)
-  //     const retData = axiosResponse.data
-  //     console.log(`retData: ${JSON.stringify(retData, null, 2)}`)
-  //
-  //     return 'test'
-  //   } catch (err) {
-  //     console.error('Error in login(): ', err)
-  //     throw err
-  //   }
-  // }
 
   validateInput (flags) {
     try {

@@ -1,8 +1,11 @@
 /*
-curl --request POST 'https://api.temporal.cloud/v2/auth/login' --header 'Content-Type: application/json' --data-raw '{"username": "<your user name>", "password": "<your password>"}'
+
 */
 
-const axios = require('axios')
+const fs = require('fs')
+
+const Temporal = require('temporal-js')
+const temporal = new Temporal(true)
 
 const { Command, flags } = require('@oclif/command')
 
@@ -16,7 +19,7 @@ class Upload extends Command {
 
     _this = this
 
-    _this.axios = axios
+    _this.temporal = temporal
   }
 
   async run () {
@@ -24,6 +27,9 @@ class Upload extends Command {
 
     const goodFlags = this.validateInput(flags)
     if (!goodFlags) throw new Error('Problem with input flags.')
+
+    // Login and get the JWT token.
+    await _this.login(flags)
 
     const hash = await _this.upload(flags)
     console.log(`hash: ${hash}`)
@@ -37,15 +43,46 @@ class Upload extends Command {
       const time = flags.time
       console.log(`time: ${time}`)
 
-      return 'abc123'
+      // const rndStr = (10000 * Math.random()).toString()
+      // const buf = new Buffer(rndStr)
+
+      const hash = await _this.temporal.uploadPublicFile(
+        fs.createReadStream(filename),
+        flags.time
+      )
+
+      return hash
     } catch (err) {
       console.log('Error in upload(): ', err)
       throw err
     }
   }
 
+  async login (flags) {
+    try {
+      const jwt = await _this.temporal.login(flags.user, flags.pass)
+      // console.log(`jwt: ${JSON.stringify(jwt, null, 2)}`)
+      return jwt.token
+    } catch (err) {
+      console.error('Error in login(): ', err)
+      throw err
+    }
+  }
+
   validateInput (flags) {
     try {
+      const user = flags.user
+      if (!user) {
+        console.log('Username must be specified.')
+        return false
+      }
+
+      const pass = flags.pass
+      if (!pass) {
+        console.log('Password must be specified.')
+        return false
+      }
+
       const file = flags.file
       if (!file) {
         console.log('File name must be specified.')
@@ -72,6 +109,8 @@ Uploads a file to Temporal servers to be served over IPFS.
 `
 
 Upload.flags = {
+  user: flags.string({ char: 'u', description: 'User name' }),
+  pass: flags.string({ char: 'p', description: 'Password' }),
   file: flags.string({ char: 'f', description: 'File name' }),
   time: flags.string({ char: 't', description: 'Number of months to pin the file.' })
 }
