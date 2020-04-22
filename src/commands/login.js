@@ -11,8 +11,6 @@ const { Command, flags } = require('@oclif/command')
 
 let _this
 
-const TEMPORAL_SERVER = 'https://api.temporal.cloud/'
-
 class Login extends Command {
   constructor (argv, config) {
     super(argv, config)
