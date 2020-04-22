@@ -13,7 +13,8 @@
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
-    "@oclif/plugin-help": "^2"
+    "@oclif/plugin-help": "^2",
+    "temporal-js": "^2.0.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1",
