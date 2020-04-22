@@ -1,7 +1,7 @@
 {
   "name": "@chris.troutner/temporal",
   "description": "Prototype CLI for interacting with temporal.cloud REST API.",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "author": "Chris Troutner <chris.troutner@gmail.com>",
   "contributors": [
     "Jeff Dickey @jdxcode"

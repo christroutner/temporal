@@ -15,7 +15,7 @@ $ npm install -g @chris.troutner/temporal
 $ temporal COMMAND
 running command...
 $ temporal (-v|--version|version)
-@chris.troutner/temporal/1.0.1 linux-x64 node-v12.16.1
+@chris.troutner/temporal/1.0.0 linux-x64 node-v12.16.1
 $ temporal --help [COMMAND]
 USAGE
   $ temporal COMMAND
@@ -45,7 +45,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/get-key.js](https://github.com/christroutner/temporal/blob/v1.0.1/src/commands/get-key.js)_
+_See code: [src/commands/get-key.js](https://github.com/christroutner/temporal/blob/v1.0.0/src/commands/get-key.js)_
 
 ## `temporal goodbye`
 
@@ -63,7 +63,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/goodbye.js](https://github.com/christroutner/temporal/blob/v1.0.1/src/commands/goodbye.js)_
+_See code: [src/commands/goodbye.js](https://github.com/christroutner/temporal/blob/v1.0.0/src/commands/goodbye.js)_
 
 ## `temporal hello`
 
@@ -81,7 +81,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/hello.js](https://github.com/christroutner/temporal/blob/v1.0.1/src/commands/hello.js)_
+_See code: [src/commands/hello.js](https://github.com/christroutner/temporal/blob/v1.0.0/src/commands/hello.js)_
 
 ## `temporal help [COMMAND]`
 
