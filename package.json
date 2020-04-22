@@ -14,8 +14,6 @@
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^2",
-    "axios": "^0.19.2",
-    "temporal": "github:bonedaddy/temporal-js",
     "temporal-js": "^2.0.0"
   },
   "devDependencies": {

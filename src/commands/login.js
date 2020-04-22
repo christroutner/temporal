@@ -2,7 +2,7 @@
 curl --request POST 'https://api.temporal.cloud/v2/auth/login' --header 'Content-Type: application/json' --data-raw '{"username": "<your user name>", "password": "<your password>"}'
 */
 
-const axios = require('axios')
+// const axios = require('axios')
 
 const Temporal = require('temporal-js')
 const temporal = new Temporal(true)
@@ -19,7 +19,7 @@ class Login extends Command {
 
     _this = this
 
-    _this.axios = axios
+    // _this.axios = axios
     _this.temporal = temporal
   }
 
@@ -45,57 +45,57 @@ class Login extends Command {
     }
   }
 
-  async login (flags) {
-    try {
-      // const axiosOptions = {
-      //   method: 'post',
-      // headers: {
-      //   'Content-Type': 'text/plain'
-      // },
-      //   url: `${TEMPORAL_SERVER}v2/auth/login`,
-      //   body: JSON.stringify({
-      //     username: flags.user,
-      //     password: flags.pass
-      //   })
-      // }
-
-      const path = `${TEMPORAL_SERVER}v2/auth/login`
-      console.log(`path: ${path}`)
-
-      const body = JSON.stringify({
-        username: flags.user,
-        password: flags.pass
-      })
-      // const body = {
-      //   username: flags.user,
-      //   password: flags.pass
-      // }
-      console.log(`body: ${body}`)
-
-      const axiosOptions = {
-        method: 'post',
-        url: path,
-        body: body,
-        // body: {
-        //   username: flags.user,
-        //   password: flags.pass
-        // },
-        headers: {
-          // 'content-type': 'text/plain'
-          'Content-Type': 'application/json'
-        }
-      }
-
-      const axiosResponse = await _this.axios.request(axiosOptions)
-      const retData = axiosResponse.data
-      console.log(`retData: ${JSON.stringify(retData, null, 2)}`)
-
-      return 'test'
-    } catch (err) {
-      console.error('Error in login(): ', err)
-      throw err
-    }
-  }
+  // async login (flags) {
+  //   try {
+  //     // const axiosOptions = {
+  //     //   method: 'post',
+  //     // headers: {
+  //     //   'Content-Type': 'text/plain'
+  //     // },
+  //     //   url: `${TEMPORAL_SERVER}v2/auth/login`,
+  //     //   body: JSON.stringify({
+  //     //     username: flags.user,
+  //     //     password: flags.pass
+  //     //   })
+  //     // }
+  //
+  //     const path = `${TEMPORAL_SERVER}v2/auth/login`
+  //     console.log(`path: ${path}`)
+  //
+  //     const body = JSON.stringify({
+  //       username: flags.user,
+  //       password: flags.pass
+  //     })
+  //     // const body = {
+  //     //   username: flags.user,
+  //     //   password: flags.pass
+  //     // }
+  //     console.log(`body: ${body}`)
+  //
+  //     const axiosOptions = {
+  //       method: 'post',
+  //       url: path,
+  //       body: body,
+  //       // body: {
+  //       //   username: flags.user,
+  //       //   password: flags.pass
+  //       // },
+  //       headers: {
+  //         // 'content-type': 'text/plain'
+  //         'Content-Type': 'application/json'
+  //       }
+  //     }
+  //
+  //     const axiosResponse = await _this.axios.request(axiosOptions)
+  //     const retData = axiosResponse.data
+  //     console.log(`retData: ${JSON.stringify(retData, null, 2)}`)
+  //
+  //     return 'test'
+  //   } catch (err) {
+  //     console.error('Error in login(): ', err)
+  //     throw err
+  //   }
+  // }
 
   validateInput (flags) {
     try {
